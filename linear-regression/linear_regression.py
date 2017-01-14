@@ -4,7 +4,6 @@ A multi variate linear regression model.
 """
 
 import numpy as np
-import matplotlib
 from matplotlib import pyplot as plt
 
 
@@ -89,8 +88,8 @@ def gradient_descent_multi(x, y, theta, alpha, num_iters):
 if __name__ == '__main__':
     print('Loading data...')
     data = np.loadtxt('data.txt', delimiter=',')
-    x = np.matrix(data[:, 0:2])  # input
-    y = np.transpose(np.matrix(data[:, 2]))  # output
+    x = np.matrix(data[:, 0:-1])  # input
+    y = np.transpose(np.matrix(data[:, -1]))  # output
     m = y.shape[0]  # number of training examples
 
     # Normalizing features
