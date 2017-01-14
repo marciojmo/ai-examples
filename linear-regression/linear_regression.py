@@ -20,12 +20,11 @@ def normal_equation(x, y):
 
 def feature_normalize(x):
     """
-    Normalizes the features in x. Normalization improoves the performance of the gradient descent.
+    Normalizes the features in x. Normalization helps gradient descent to converge faster.
     :param x: Features to normalize.
     :return: A normalized version of x where the mean value of each feature is 0 and
     the standard deviation is 1. This is often a good preprocessing step to do when
-    working with learning algorithms. The parameters mu and sigma will be used to revert / convert
-    the normalized values to non-normalized (original) values.
+    working with learning algorithms.
     """
     mu = np.mean(x, axis=0)
     sigma = np.std(x, axis=0)
@@ -76,7 +75,7 @@ def gradient_descent_multi(x, y, theta, alpha, num_iters):
         # The slope of the cost function
         derivative_term = (1 / m) * (np.transpose(x) * errors)
 
-        # Simultaneous update
+        # Simultaneously update all theta values
         theta -= alpha * derivative_term
 
         # Save the cost function for the current iteration.
@@ -116,7 +115,7 @@ if __name__ == '__main__':
     # and gradient descent performs better.
     # theta = normal_equation(x,y)  # theta found by normal equation
 
-    # Plot the convergence graph
+    # Plotting the convergence graph
     print('Plotting the convergence graph...')
     plt.plot(range(0, J_history.shape[0]), J_history, '-b')
     plt.xlabel('Number of iterations')
